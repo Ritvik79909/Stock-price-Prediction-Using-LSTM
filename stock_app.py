@@ -10,6 +10,90 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="📈 Stock Price Predictor", layout="wide")
 st.title("📉 Stock Price Prediction using LSTM")
 
+def add_custom_css():
+    st.markdown("""
+        <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        html, body, [class*="css"] {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Background */
+        .stApp {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism for Sidebar */
+        section[data-testid="stSidebar"] {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glassmorphism for Containers/Cards via markdown divs if needed, 
+           but applying to Streamlit's natural containers where possible */
+        
+        /* Headers and Text */
+        h1, h2, h3, h4, h5, h6, p, label, .stMarkdown {
+            color: #ffffff !important;
+        }
+        
+        /* Metric Cards */
+        div[data-testid="stMetricValue"] {
+            color: #ffffff !important;
+        }
+        div[data-testid="stMetricLabel"] {
+            color: #e0e0e0 !important;
+        }
+
+        /* Dataframes */
+        div[data-testid="stDataFrame"] {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Inputs */
+        .stTextInput > div > div > input {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+        .stDateInput > div > div > input {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        /* Buttons */
+        div.stButton > button {
+            background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        div.stButton > button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+        }
+        
+        /* Slider */
+        div.stSlider > div[data-baseweb="slider"] > div > div > div {
+             background-color: #00d2ff !important;
+        }
+
+        </style>
+        """, unsafe_allow_html=True)
+
+add_custom_css()
+
 # Load pre-trained model (.h5)
 model = load_model('C:/Users/karan/OneDrive/Documents/Stock price/stock_model.h5')
 
